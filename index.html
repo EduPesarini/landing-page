@@ -1,0 +1,988 @@
+<!-- Google Fonts: Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    /* VARIÁVEIS E RESET */
+    :root {
+        --bg-primary: #0a1628;
+        --bg-secondary: #0d1b2a;
+        --accent: #c9a96e;
+        --text-white: #ffffff;
+        --text-muted: #a0aec0;
+        --card-bg: #ffffff;
+        --card-text: #1a202c;
+        --transition: all 0.3s ease;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg-primary);
+        color: var(--text-white);
+        line-height: 1.7;
+        overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        transition: var(--transition);
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    img {
+        max-width: 100%;
+        display: block;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 16px 32px;
+        background-color: var(--accent);
+        color: var(--bg-primary);
+        font-weight: 700;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.9rem;
+        border: 2px solid var(--accent);
+    }
+
+    .btn:hover {
+        background-color: transparent;
+        color: var(--accent);
+        transform: translateY(-2px);
+    }
+
+    /* HEADER */
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: rgba(10, 22, 40, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+        padding: 10px 0;
+    }
+
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        margin-bottom: 5px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding-bottom: 5px;
+    }
+
+    .header-main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.6rem;
+        font-weight: 800;
+        letter-spacing: 1px;
+        color: var(--text-white);
+    }
+
+    .logo span {
+        color: var(--accent);
+    }
+
+    nav ul {
+        display: flex;
+        gap: 25px;
+    }
+
+    nav ul li a {
+        font-size: 0.85rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    nav ul li a:hover {
+        color: var(--accent);
+    }
+
+    /* HERO */
+    .hero {
+        padding: 180px 0 100px;
+        background: linear-gradient(135deg, #0a1628 0%, #162a44 100%);
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+        color: var(--text-muted);
+        margin-bottom: 30px;
+        max-width: 550px;
+    }
+
+    .hero-stats {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .stat-item b {
+        display: block;
+        font-size: 1.5rem;
+        color: var(--accent);
+    }
+
+    .stat-item span {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+    }
+
+    .hero-image img {
+        border-radius: 10px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        border: 1px solid rgba(201, 169, 110, 0.3);
+    }
+
+    /* SOBRE */
+    .about {
+        padding: 100px 0;
+        background-color: var(--bg-secondary);
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 60px;
+        align-items: flex-start;
+    }
+
+    .about-image img {
+        border-radius: 10px;
+        border-left: 5px solid var(--accent);
+    }
+
+    .about-content h2 {
+        font-size: 2.2rem;
+        color: var(--accent);
+    }
+
+    .about-content .subtitle {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: var(--text-white);
+    }
+
+    .about-text p {
+        margin-bottom: 20px;
+        text-align: justify;
+        color: var(--text-muted);
+    }
+
+    .certifications {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .cert-item {
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .cert-item::before {
+        content: "•";
+        color: var(--accent);
+        font-weight: bold;
+    }
+
+    /* FILOSOFIA */
+    .philosophy {
+        padding: 80px 0;
+        text-align: center;
+        background: var(--bg-primary);
+    }
+
+    .philosophy blockquote {
+        font-size: 1.8rem;
+        font-style: italic;
+        max-width: 800px;
+        margin: 0 auto 30px;
+        color: var(--accent);
+    }
+
+    .philosophy p {
+        max-width: 900px;
+        margin: 0 auto;
+        color: var(--text-muted);
+    }
+
+    /* PROCEDIMENTOS */
+    .procedures {
+        padding: 100px 0;
+        background-color: var(--bg-secondary);
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+        font-size: 2.5rem;
+    }
+
+    .section-header p {
+        color: var(--text-muted);
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .procedure-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+    }
+
+    .procedure-card {
+        background-color: var(--card-bg);
+        color: var(--card-text);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        transition: var(--transition);
+    }
+
+    .procedure-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .card-image {
+        height: 220px;
+        overflow: hidden;
+    }
+
+    .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 30px;
+    }
+
+    .card-tag {
+        display: inline-block;
+        padding: 4px 12px;
+        background: #f0f4f8;
+        color: #4a5568;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        border-radius: 20px;
+        margin-bottom: 15px;
+    }
+
+    .card-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .card-content p {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+        color: #4a5568;
+    }
+
+    .card-list {
+        font-size: 0.85rem;
+        margin-bottom: 15px;
+    }
+
+    .card-list li {
+        margin-bottom: 8px;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .card-note {
+        font-size: 0.8rem;
+        font-style: italic;
+        color: #718096;
+        border-top: 1px solid #edf2f7;
+        padding-top: 15px;
+    }
+
+    /* PROVA SOCIAL */
+    .social-proof {
+        padding: 100px 0;
+        background-color: var(--bg-primary);
+    }
+
+    .doctoralia-badge {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(201, 169, 110, 0.2);
+        border-radius: 12px;
+        padding: 40px;
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .stars {
+        color: var(--accent);
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .doctoralia-badge h4 {
+        font-size: 2rem;
+        margin-bottom: 5px;
+    }
+
+    .doctoralia-badge p {
+        color: var(--text-muted);
+        margin-bottom: 20px;
+    }
+
+    .attributes {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .attr-tag {
+        background: rgba(201, 169, 110, 0.1);
+        color: var(--accent);
+        padding: 6px 16px;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-bottom: 60px;
+    }
+
+    .testimonial-card {
+        background: var(--card-bg);
+        color: var(--card-text);
+        padding: 30px;
+        border-radius: 12px;
+        position: relative;
+    }
+
+    .verified-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 0.65rem;
+        color: #38a169;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .testimonial-card p {
+        font-style: italic;
+        font-size: 0.9rem;
+        margin: 15px 0;
+    }
+
+    .patient-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .initials {
+        width: 40px;
+        height: 40px;
+        background: var(--bg-primary);
+        color: var(--accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.8rem;
+    }
+
+    .patient-details strong {
+        display: block;
+        font-size: 0.9rem;
+    }
+
+    .patient-details span {
+        font-size: 0.75rem;
+        color: #718096;
+    }
+
+    .counters {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        text-align: center;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 40px;
+    }
+
+    .counter-item b {
+        display: block;
+        font-size: 2.5rem;
+        color: var(--accent);
+    }
+
+    .counter-item span {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+    }
+
+    /* FAQ */
+    .faq {
+        padding: 100px 0;
+        background-color: var(--bg-secondary);
+    }
+
+    .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    details {
+        background: var(--bg-primary);
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(201, 169, 110, 0.1);
+        overflow: hidden;
+    }
+
+    summary {
+        padding: 20px;
+        cursor: pointer;
+        font-weight: 600;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: var(--transition);
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    summary::after {
+        content: "+";
+        color: var(--accent);
+        font-size: 1.5rem;
+    }
+
+    details[open] summary::after {
+        content: "-";
+    }
+
+    details[open] summary {
+        background: rgba(201, 169, 110, 0.05);
+        color: var(--accent);
+    }
+
+    .faq-content {
+        padding: 0 20px 20px;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        white-space: pre-line;
+    }
+
+    /* CTA FINAL */
+    .cta-final {
+        padding: 100px 0;
+        text-align: center;
+        background: linear-gradient(rgba(10, 22, 40, 0.8), rgba(10, 22, 40, 0.8)), url('imagens/hero.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    .cta-final h2 {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+
+    .cta-final p {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+        color: var(--text-muted);
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 80px 0 40px;
+        background-color: #050b14;
+        border-top: 1px solid rgba(201, 169, 110, 0.2);
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 60px;
+    }
+
+    .footer-col h4 {
+        color: var(--accent);
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .footer-col p, .footer-col li {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-bottom: 12px;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding-top: 40px;
+        border-top: 1px solid rgba(255,255,255,0.05);
+        font-size: 0.75rem;
+        color: var(--text-muted);
+    }
+
+    /* RESPONSIVIDADE */
+    @media (max-width: 992px) {
+        .hero-grid, .about-grid {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        .hero-content h1 { font-size: 2.5rem; }
+        .hero-stats, .attributes, .counters { justify-content: center; }
+        .hero-content p { margin: 0 auto 30px; }
+        .about-image { order: -1; }
+        .footer-grid { grid-template-columns: 1fr 1fr; }
+        nav { display: none; }
+        .counters { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+        .footer-grid { grid-template-columns: 1fr; }
+        .hero-stats { flex-direction: column; gap: 15px; }
+        .header-top { display: none; }
+        .counters { grid-template-columns: 1fr; }
+    }
+</style>
+Código<!-- HEADER -->
+<header>
+    <div class="container">
+        <div class="header-top">
+            <span>Rua João Wyclif 111, sl 2407-2408, Londrina/PR</span>
+            <span>(43) 3028-1212 | WhatsApp: (43) 99664-0007</span>
+        </div>
+        <div class="header-main">
+            <a href="#" class="logo">Dr. Eduardo <span>Pesarini</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#especialidades">Especialidades</a></li>
+                    <li><a href="#avaliacoes">Avaliações</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!-- HERO SECTION -->
+<section id="inicio" class="hero">
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <h1>Sua visão merece o melhor cuidado</h1>
+                <p>Mais de 35 mil cirurgias. 25 anos de dedicação à saúde ocular. Excelência em catarata, cirurgia refrativa e estética periocular.</p>
+                <div class="hero-stats">
+                    <div class="stat-item"><b>35.000+</b><span>Cirurgias</span></div>
+                    <div class="stat-item"><b>25 Anos</b><span>Experiência</span></div>
+                    <div class="stat-item"><b>3</b><span>Fellowships</span></div>
+                </div>
+                <a href="https://wa.me/5543996640007" class="btn" target="_blank">Agende sua consulta</a>
+            </div>
+            <div class="hero-image">
+                <img src="imagens/hero.jpg" alt="Dr. Eduardo Pesarini Felippe">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="imagens/dr-eduardo.jpg" alt="Dr. Eduardo Pesarini">
+            </div>
+            <div class="about-content">
+                <h2>Conheça o Dr. Eduardo Pesarini Felippe</h2>
+                <div class="about-text">
+                    <p>Há 25 anos, a medicina ocular é mais do que uma profissão: é uma vocação. Formado pela Universidade do Oeste Paulista (UNOESTE) em 2001, o Dr. Eduardo construiu sua trajetória sobre pilares sólidos de conhecimento, técnica e humanidade.</p>
+                    <p>A especialização veio na Faculdade de Medicina do ABC, onde concluiu a Residência em Oftalmologia em 2006 e, logo em seguida, o Fellowship em Catarata e Cirurgia Refrativa — aprimoramento que definiu o rumo de sua carreira. No mesmo ano, foi aprovado na Prova Nacional de Oftalmologia (PNO), conquistando o Título de Especialista em Oftalmologia pelo Conselho Brasileiro de Oftalmologia e pela Associação Médica Brasileira.</p>
+                    <p>Dedicou-se também ao Fellowship em Cirurgia de Pálpebras no IPR-Instituto Pedro Ruiz/SP, aprofundando sua atuação na cirurgia plástica periocular com ênfase em resultados naturais e harmônicos.</p>
+                    <p>Sua excelência cirúrgica é medida não apenas pelos mais de 35 mil procedimentos de catarata e refrativa já realizados, mas pela confiança que cada paciente deposita ao confiar-lhe a própria visão.</p>
+                    <p>O compromisso com o ensino também marca sua trajetória. Foi Chefe da Disciplina de Catarata em serviços de Residência e Fellowship da FMABC e da PUC de Campinas, e atualmente exerce a Chefia do Fellowship de Catarata no Hoftalon de Londrina.</p>
+                    <p>Ao longo de duas décadas e meia, esteve em serviços de referência em São Paulo — EyeClinic, Centro Oftalmológico Tranjan, Centro Oftalmológico Laser Ocular, Hospital São Luiz e Hospital Israelita Albert Einstein.</p>
+                </div>
+                <div class="certifications">
+                    <div class="cert-item">Título de Especialista em Oftalmologia — CBO / AMB (2006)</div>
+                    <div class="cert-item">Fellowship em Catarata e Cirurgia Refrativa — FMABC (2006-2007)</div>
+                    <div class="cert-item">Fellowship em Cirurgia de Pálpebras — IPR-Instituto Pedro Ruiz/SP</div>
+                    <div class="cert-item">Membro da BRASCRS</div>
+                    <div class="cert-item">Membro da ESCRS</div>
+                    <div class="cert-item">Chefe do Fellowship de Catarata — Hoftalon Londrina</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FILOSOFIA -->
+<section class="philosophy">
+    <div class="container">
+        <blockquote>"O cuidado que vai além da visão — porque olhar bem também é sentir-se bem."</blockquote>
+        <p>Na clínica do Dr. Eduardo Pesarini, acreditamos que cuidar da visão é também cuidar de como você se vê e se apresenta ao mundo. Buscamos rejuvenescer de forma harmônica, respeitando suas características individuais, sem jamais apagar sua identidade. Essa mesma honestidade norteia todos os aspectos do nosso atendimento.</p>
+    </div>
+</section>
+
+<!-- PROCEDIMENTOS -->
+<section id="especialidades" class="procedures">
+    <div class="container">
+        <div class="section-header">
+            <h2>Procedimentos e Tratamentos</h2>
+            <p>Da cirurgia de catarata à estética periocular, cada procedimento é pensado de forma individualizada para oferecer o melhor resultado com segurança e naturalidade.</p>
+        </div>
+
+        <div class="procedure-grid">
+            <!-- CATARATA -->
+            <div class="procedure-card">
+                <div class="card-image"><img src="imagens/catarata.jpg" alt="Cirurgia de Catarata"></div>
+                <div class="card-content">
+                    <span class="card-tag">Cirurgia</span>
+                    <h3>Cirurgia de Catarata</h3>
+                    <p>Procedimento ambulatorial, rápido e indolor. Substituição do cristalino por lente artificial via microincisão de 2,4mm sem pontos.</p>
+                    <ul class="card-list">
+                        <li>✅ Sem restrições alimentares</li>
+                        <li>✅ Sem repouso absoluto</li>
+                        <li>✅ Uso de telas liberado</li>
+                    </ul>
+                    <p class="card-note">Opção de lentes que corrigem o grau para múltiplas distâncias.</p>
+                </div>
+            </div>
+
+            <!-- REFRATIVA -->
+            <div class="procedure-card">
+                <div class="card-image"><img src="imagens/refrativa.jpg" alt="Cirurgia Refrativa"></div>
+                <div class="card-content">
+                    <span class="card-tag">Cirurgia</span>
+                    <h3>Cirurgia Refrativa</h3>
+                    <p>Correção de grau com tecnologia laser ou implante de lentes para independência dos óculos.</p>
+                    <ul class="card-list">
+                        <li>• <b>PRK:</b> Regeneração epitelial natural.</li>
+                        <li>• <b>LASIK:</b> Flap com laser de femtosegundo.</li>
+                        <li>• <b>Lentes Fácicas:</b> Para graus elevados.</li>
+                    </ul>
+                    <p class="card-note">Processo rápido sob anestesia tópica (colírios).</p>
+                </div>
+            </div>
+
+            <!-- BLEFAROPLASTIA -->
+            <div class="procedure-card">
+                <div class="card-image"><img src="imagens/Palpebrais.jpg" alt="Cirurgias Palpebrais"></div>
+                <div class="card-content">
+                    <span class="card-tag">Estética</span>
+                    <h3>Cirurgias Palpebrais</h3>
+                    <p>Rejuvenescer o olhar sem perder sua essência através da blefaroplastia e técnicas avançadas.</p>
+                    <ul class="card-list">
+                        <li>• Blefaroplastia Superior e Inferior</li>
+                        <li>• Remoção de Bolsas de Gordura</li>
+                        <li>• Resurfacing com Laser de CO₂</li>
+                    </ul>
+                    <p class="card-note">Resultados naturais respeitando a anatomia individual.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROVA SOCIAL -->
+<section id="avaliacoes" class="social-proof">
+    <div class="container">
+        <div class="section-header">
+            <h2>Resultados que falam por si</h2>
+            <p>Confiança construída em 25 anos de carreira e milhares de vidas transformadas.</p>
+        </div>
+
+        <div class="doctoralia-badge">
+            <div class="stars">★★★★★</div>
+            <h4>5,0</h4>
+            <p>Certificado de Excelência Doctoralia | 353 avaliações verificadas</p>
+            <div class="attributes">
+                <span class="attr-tag">Atencioso durante a consulta</span>
+                <span class="attr-tag">Explicações detalhadas</span>
+                <span class="attr-tag">Ótimo consultório</span>
+            </div>
+            <a href="https://www.doctoralia.com.br/eduardo-pesarini-felippe/oftalmologista/londrina" target="_blank" style="display:block; margin-top:20px; color:var(--accent); font-size:0.8rem; text-decoration:underline;">Ver perfil completo na Doctoralia</a>
+        </div>
+
+        <div class="testimonials-grid">
+            <!-- Depoimento 1 -->
+            <div class="testimonial-card">
+                <span class="verified-badge">✓ Opinião Verificada</span>
+                <div class="stars" style="font-size: 1rem;">★★★★★</div>
+                <p>"Excelente atendimento. Dr. Eduardo um profissional muito cuidadoso e simpático. Recomendo."</p>
+                <div class="patient-info">
+                    <div class="initials">FM</div>
+                    <div class="patient-details">
+                        <strong>F.M.</strong>
+                        <span>Consulta Oftalmologia</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Depoimento 2 -->
+            <div class="testimonial-card">
+                <span class="verified-badge">✓ Opinião Verificada</span>
+                <div class="stars" style="font-size: 1rem;">★★★★★</div>
+                <p>"Atencioso. Soube explicar de forma clara minhas dúvidas para que futuramente possa fazer escolhas e decisões com mais segurança. Atendimento mais humano e personalizado."</p>
+                <div class="patient-info">
+                    <div class="initials">SM</div>
+                    <div class="patient-details">
+                        <strong>Simone M.</strong>
+                        <span>Consulta Oftalmologia</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Depoimento 3 -->
+            <div class="testimonial-card">
+                <span class="verified-badge">✓ Opinião Verificada</span>
+                <div class="stars" style="font-size: 1rem;">★★★★★</div>
+                <p>"Ótimo médico, ótimo atendimento e consultório. Avaliação completa e detalhada. Ao final da consulta você sai seguro sobre sua condição e tratamento."</p>
+                <div class="patient-info">
+                    <div class="initials">CZ</div>
+                    <div class="patient-details">
+                        <strong>C.Z.</strong>
+                        <span>Consulta Oftalmologia</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Depoimento 4 -->
+            <div class="testimonial-card">
+                <span class="verified-badge">✓ Opinião Verificada</span>
+                <div class="stars" style="font-size: 1rem;">★★★★★</div>
+                <p>"Ótimo atendimento, pontual, super competente. Recomendo muito."</p>
+                <div class="patient-info">
+                    <div class="initials">SA</div>
+                    <div class="patient-details">
+                        <strong>S.A.</strong>
+                        <span>Consulta Oftalmologia</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Depoimento 5 -->
+            <div class="testimonial-card">
+                <span class="verified-badge">✓ Opinião Verificada</span>
+                <div class="stars" style="font-size: 1rem;">★★★★★</div>
+                <p>"Primeira consulta com ele, tivemos uma boa experiência, excelente explicação do procedimento cirúrgico, atendendo nossa demanda e dúvidas. Super indico."</p>
+                <div class="patient-info">
+                    <div class="initials">RG</div>
+                    <div class="patient-details">
+                        <strong>R.G.</strong>
+                        <span>Pré-cirúrgico</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Depoimento 6 -->
+            <div class="testimonial-card">
+                <span class="verified-badge">✓ Opinião Verificada</span>
+                <div class="stars" style="font-size: 1rem;">★★★★★</div>
+                <p>"Atendimento foi ótimo, muito eficiente e atencioso!"</p>
+                <div class="patient-info">
+                    <div class="initials">AM</div>
+                    <div class="patient-details">
+                        <strong>A.M.</strong>
+                        <span>Consulta Oftalmologia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="counters">
+            <div class="counter-item"><b>35.000+</b><span>Cirurgias</span></div>
+            <div class="counter-item"><b>25</b><span>Anos de Carreira</span></div>
+            <div class="counter-item"><b>353</b><span>Avaliações</span></div>
+            <div class="counter-item"><b>5,0</b><span>Nota Média</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq">
+    <div class="container">
+        <div class="section-header">
+            <h2>Perguntas Frequentes</h2>
+            <p>Tire suas dúvidas antes de agendar</p>
+        </div>
+
+        <div class="faq-container">
+            <details>
+                <summary>As cirurgias doem? Que tipo de anestesia é usada?</summary>
+                <div class="faq-content">
+                    Cada procedimento tem sua própria abordagem, sempre priorizando seu conforto:
+
+                    • <b>Catarata:</b> anestesia tópica (colírio) com sedação leve. Microincisão de 2,4 mm, sem pontos. Não há curativo oclusivo — apenas um protetor acrílico. É comum uma sensação leve de areia no primeiro dia. O paciente sai enxergando e a visão vai melhorando progressivamente com o uso das medicações de pós-operatório.
+                    • <b>Refrativa (PRK):</b> anestesia tópica (colírio), sem sedação, sem incisão.
+                    • <b>Refrativa (LASIK):</b> anestesia tópica (colírio), sem sedação. O flap é criado com laser de femtosegundo.
+                    • <b>Refrativa com implante de lente fáquica:</b> anestesia e incisão corneana iguais à cirurgia de catarata, mas sem remoção do cristalino.
+                    • <b>Blefaroplastia:</b> anestesia local + sedação. As incisões na pele podem ser feitas com laser, bisturi de alta frequência ou bisturi frio, sempre nas regiões de dobras naturais para que fiquem menos visíveis.
+
+                    Nenhum procedimento causa dor significativa.
+                </div>
+            </details>
+
+            <details>
+                <summary>Quanto tempo leva a recuperação?</summary>
+                <div class="faq-content">
+                    Cada caso é único — os prazos abaixo são uma estimativa:
+
+                    • <b>Catarata:</b> retorno às atividades normais em 1 a 2 dias. A recuperação visual depende do tipo de lente escolhida: se a lente objetivar a correção funcional do grau, a visão melhora mais rapidamente; caso contrário, o exame refracional é feito após 30 dias. Colírios por algumas semanas, suspensão de exercícios por 30 dias. Uso de telas liberado, sem repouso absoluto.
+                    • <b>Refrativa (LASIK):</b> melhora visual rápida em 2 a 3 dias, mas o processo de estabilização total pode levar mais tempo.
+                    • <b>Refrativa (PRK):</b> a visão melhora entre 3 e 7 dias. A lente de contato terapêutica é removida com 7 dias. Pode haver flutuação visual no primeiro mês.
+                    • <b>Blefaroplastia:</b> inchaço e hematomas por 7 a 14 dias. Pontos removidos com 10 dias. O retorno ao trabalho depende de como o paciente se sente. Pós-operatório com pomada/colírio antibiótico e, após 14 dias, formulações tópicas que modulam a cicatrização.
+
+                    Em todos os casos, o acompanhamento pós-operatório é feito pelo Dr. Eduardo pessoalmente.
+                </div>
+            </details>
+
+            <details>
+                <summary>Vocês atendem por convênio?</summary>
+                <div class="faq-content">Atendemos <b>Unimed</b> e particulares. Para condições crônicas, oferecemos planos de acompanhamento contínuo. Entre em contato pelo WhatsApp para confirmar a cobertura do seu convênio.</div>
+            </details>
+
+            <details>
+                <summary>Vou precisar de óculos após a cirurgia de catarata?</summary>
+                <div class="faq-content">Depende da lente escolhida. Oferecemos lentes que corrigem o grau para longe e múltiplas distâncias, conforme a anatomia ocular permitir. Muitos pacientes alcançam independência visual — mas cada caso é avaliado individualmente, com franqueza sobre o resultado esperado.</div>
+            </details>
+
+            <details>
+                <summary>Existe idade certa para operar?</summary>
+                <div class="faq-content">Não. O que determina a indicação é a saúde ocular, não o número na identidade. A cirurgia refrativa costuma ser indicada a partir dos 21 anos, com grau estável. A cirurgia de catarata é recomendada quando a visão prejudica suas atividades — não existe idade máxima. A blefaroplastia é indicada quando há excesso de pele ou flacidez que incomoda. A consulta define se você é candidato.</div>
+            </details>
+
+            <details>
+                <summary>As cirurgias têm riscos?</summary>
+                <div class="faq-content">Sim, como qualquer procedimento médico. Transparência é um dos nossos pilares. Complicações são raras, mas existem — infecção, inflamação ou resultado subótimo. Por isso, a avaliação pré-operatória é detalhada: medimos cada parâmetro do seu olho para minimizar riscos ao máximo. Em 25 anos e mais de 35 mil procedimentos, o Dr. Eduardo construiu sua trajetória sobre segurança e honestidade — incluindo ser claro quando não operar é a melhor decisão.</div>
+            </details>
+
+            <details>
+                <summary>A blefaroplastia deixa o olhar artificial?</summary>
+                <div class="faq-content">Não. Nosso princípio é a naturalidade. O objetivo é rejuvenescer de forma harmônica, respeitando suas características individuais sem apagar sua identidade. As incisões são feitas nas dobras naturais para ficarem menos visíveis. Trabalhamos para que o resultado pareça que você sempre teve aquele olhar — apenas mais descansado.</div>
+            </details>
+
+            <details>
+                <summary>Como funciona o investimento?</summary>
+                <div class="faq-content">Atendemos via Unimed ou Particular. O investimento leva em consideração a complexidade de cada caso — técnica utilizada, tipo de lente e particularidades do seu olho. Nossos colaboradores estão preparados para ajudar a encontrar a melhor solução para você. Todo orçamento é apresentado com transparência antes de qualquer decisão, sem surpresas ou pressão. O WhatsApp é o canal mais rápido para tirar dúvidas específicas.</div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="contato" class="cta-final">
+    <div class="container">
+        <h2>Agende sua consulta</h2>
+        <p>Dê o primeiro passo para cuidar da sua visão com quem entende do assunto.</p>
+        <a href="https://wa.me/5543996640007" class="btn" target="_blank">Fale conosco pelo WhatsApp</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="#" class="logo">Dr. Eduardo <span>Pesarini</span></a>
+            </div>
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <ul>
+                    <li>(43) 3028-1212</li>
+                    <li>(43) 99664-0007</li>
+                    <li>contato@iolpr.com.br</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Endereço</h4>
+                <p>Rua João Wyclif 111, sl 2407-2408<br>Gleba Palhano, Londrina/PR<br>CEP 86050-450</p>
+            </div>
+            <div class="footer-col">
+                <h4>Horários</h4>
+                <p>Seg a Sex: 8h às 18h<br>Sábado: 8h às 12h</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Dr. Eduardo Pesarini Felippe. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</footer>
+Pensei por 1 segundo
